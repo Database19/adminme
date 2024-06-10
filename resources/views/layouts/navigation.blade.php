@@ -2,12 +2,11 @@
     $getMenu = getMenu();
 
     $noc = 0;
-    $ids = "";
 @endphp
 
 <ul>
     @foreach($getMenu as $menu)
-        @if($menu->parent_id == null AND $menu->has_children == 0)
+        @if($menu->parent_id == null && $menu->has_children == 0)
             <li class="nav-item @if(request()->routeIs($menu->route)) active @endif">
                 <a href="{{ route($menu->route) }}">
                     <span class="icon">
@@ -22,7 +21,7 @@
             $ids = 'ddmenu_'.$noc;
         @endphp
             <li class="nav-item nav-item-has-children">
-                <a class="collapsed" href="#{{ $noc }}" class="" data-bs-toggle="collapse" data-bs-target="#{{ $ids }}"
+                <a class="collapsed" href="#{{ $ids }}" data-bs-toggle="collapse" data-bs-target="#{{ $ids }}"
                 aria-controls="{{ $ids }}" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="icon">
                         {!! $menu->icon !!}

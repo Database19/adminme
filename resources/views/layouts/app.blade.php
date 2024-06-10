@@ -9,6 +9,7 @@
     <!-- ========== All CSS files linkup ========= -->
     <link rel="stylesheet" href="{{ asset('css/lineicons.css') }}"/>
     @vite('resources/sass/app.scss')
+    @vite('resources/css/app.css')
 </head>
 <body>
 <aside class="sidebar-nav-wrapper">
@@ -21,7 +22,8 @@
         @include('layouts.navigation')
     </nav>
 </aside>
-<div class="overlay"></div>
+<div class="overlay">
+</div>
 <!-- ======== sidebar-nav end =========== -->
 
 <!-- ======== main-wrapper start =========== -->
@@ -37,6 +39,7 @@
                             <button
                                 id="menu-toggle"
                                 class="main-btn btn-hover"
+                                style="background-color: transparent; border: none;"
                             ><i class="lni lni-chevron-left"></i></button>
                         </div>
                     </div>
@@ -61,11 +64,12 @@
                             </button>
                             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profile">
                                 <li>
-                                        <a href="{{ route('profile.show') }}"> <i class="lni lni-user"></i> {{ __('My profile') }}</a>
+                                    <a href="{{ route('profile.show') }}"> <i class="lni lni-user"></i> {{ __('My profile') }}</a>
                                 </li>
                                 <li>
                                     <form method="POST" action="{{ route('logout') }}">
                                     @csrf
+                                    @method('POST')
                                         <a href="{{ route('logout') }}" onclick="event.preventDefault(); this.closest('form').submit();"> <i class="lni lni-exit"></i> {{ __('Logout') }}</a>
                                     </form>
                                 </li>
@@ -84,9 +88,7 @@
         <div class="container-fluid">
             @yield('content')
         </div>
-        <!-- end container -->
     </section>
-    <!-- ========== section end ========== -->
 
     <!-- ========== footer start =========== -->
     <footer class="footer">
@@ -99,15 +101,10 @@
                         </p>
                     </div>
                 </div>
-                <!-- end col-->
             </div>
-            <!-- end row -->
         </div>
-        <!-- end container -->
     </footer>
-    <!-- ========== footer end =========== -->
 </main>
-<!-- ======== main-wrapper end =========== -->
 
 <!-- ========= All Javascript files linkup ======== -->
 @vite('resources/js/app.js')

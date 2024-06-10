@@ -23,6 +23,24 @@
   }
 }
 
+.btn-ved {
+    display: inline-block;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    @include user-select(none);
+    padding: 5px;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    z-index: 5;
+    transition: all 0.4s ease-in-out;
+    border: 1px solid transparent;
+    overflow: hidden;
+}
+
 .btn-sm {
   padding: 10px 20px;
   font-weight: 400;

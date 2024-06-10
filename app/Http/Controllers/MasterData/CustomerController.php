@@ -9,7 +9,7 @@ class CustomerController extends Controller
 {
     public function index()
     {
-        $fields = getField('customers',['name','objek','lokasi','peruntukan','potensi','status']);
+        $fields = getField('customers',['nama','objek','lokasi','peruntukan','potensi','status']);
 
         return view('master-data.customer.index', compact('fields'));
     }
@@ -21,7 +21,7 @@ class CustomerController extends Controller
     {
         $fields = getField('customers');
 
-        return view('master-data.customer.index', compact('fields'));
+        return view('master-data.customer.form', compact('fields'));
     }
 
     /**
@@ -29,7 +29,13 @@ class CustomerController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->only(['nama', 'entitas', 'objek', 'lokasi', 'peruntukan', 'potensi', 'po_date', 'status', 'relasi']);
+        $data['uuid'] = uuid();
+        $data['id'] = _db('customers')->max('id') + 1;
+        $data['kode_customer'] = 'CS' . sprintf('%05d', $data['id']) . $data['relasi'];
+        _db('customers')->insert($data);
+
+        return redirect()->route('customer.index')->with(['success' => 'Customer berhasil ditambahkan.', 'alert-time' => 3]);
     }
 
     /**

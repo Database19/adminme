@@ -20,7 +20,6 @@
     <div class="col-lg-6">
         <div class="signin-wrapper">
             <div class="form-wrapper">
-                <h6 class="mb-15">{{ __('Login') }}</h6>
                 <form action="{{ route('login') }}" method="POST">
                     @csrf
 

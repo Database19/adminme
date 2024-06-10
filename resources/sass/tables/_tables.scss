@@ -1,37 +1,56 @@
 /* =========== tables css =========== */
 
 .table {
+  width: 100%;
+  max-width: 100%;
+  margin-bottom: 1rem;
+  background-color: transparent;
+
   & > :not(caption) > * > * {
-    padding: 15px 0;
-    border-bottom-color: $light;
+    padding: 0.75rem;
+    border-bottom: 1px solid $light;
     vertical-align: middle;
   }
   & > :not(:last-child) > :last-child > * {
-    border-bottom-color: $light;
+    border-bottom: 1px solid $light;
   }
+
+  thead {
+    tr:first-child {
+      th:first-child {
+        border-top-left-radius: 8px;
+      }
+      th:last-child {
+        border-top-right-radius: 8px;
+      }
+    }
+  }
+
   tbody {
     tr {
       &:first-child > * {
-        padding-top: 20px;
+        padding-top: 0.3rem;
       }
       &:last-child > * {
         border-bottom-color: transparent;
-        padding-bottom: 0px;
+        padding-bottom: 0;
       }
     }
   }
 
   th {
+    background-color: $primary;
+    text-align: left;
     h6 {
       font-weight: 500;
       color: $dark;
-      font-size: 14px;
+      font-size: 0.875rem;
     }
   }
 
   td {
     &.min-width {
-      padding: 5px;
+      padding: 0.3rem;
 
       @media #{$xs} {
         min-width: 150px;
@@ -39,7 +58,7 @@
     }
 
     p {
-      font-size: 14px;
+      font-size: 0.875rem;
       color: $gray;
 
       a {
@@ -52,34 +71,8 @@
     }
   }
 
-  .lead-info {
-    min-width: 200px;
-  }
-  .lead-email {
-    min-width: 150px;
+  .lead-info, .lead-email, .lead-phone, .lead-company, .referrals-image {
     white-space: nowrap;
-  }
-  .lead-phone {
-    min-width: 160px;
-  }
-  .lead-company {
-    min-width: 180px;
-  }
-
-  .referrals-image {
-    min-width: 150px;
-
-    .image {
-      width: 55px;
-      max-width: 100%;
-      height: 55px;
-      border-radius: 4px;
-      overflow: hidden;
-
-      img {
-        width: 100%;
-      }
-    }
   }
 
   .lead {
@@ -123,7 +116,7 @@
       border: none;
       background: transparent;
       padding: 0px 6px;
-      font-size: 18px;
+      font-size: 1.125rem;
 
       &.edit {
         &:hover {
@@ -159,7 +152,7 @@
     th,
     td {
       vertical-align: middle;
-      padding: 10px 5px;
+      padding: 0.625rem 0.3125rem;
     }
 
     .min-width {
@@ -210,7 +203,7 @@
   }
   .referrals-table {
     td {
-      padding: 10px;
+      padding: 0.625rem;
     }
   }
 }
@@ -219,26 +212,12 @@
 .lead-table {
   th,
   td {
-    padding: 10px 5px;
+    padding: 0.625rem 0.3125rem;
   }
 
-  .name {
-    min-width: 120px;
-  }
-
-  .email {
-    min-width: 130px;
-  }
-  .project {
-    min-width: 150px;
-  }
-
-  .status {
+  .name, .email, .project, .status, .action {
     min-width: 120px;
     text-align: center;
-  }
-  .action {
-    min-width: 60px;
   }
 }
 
@@ -253,7 +232,7 @@
 .clients-table {
   th,
   td {
-    padding: 5px;
+    padding: 0.3125rem;
 
     &.min-width {
       min-width: 150px;

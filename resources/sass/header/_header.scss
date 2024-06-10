@@ -2,7 +2,7 @@
 
 .header {
   padding: 5px 0;
-  background: #003285;
+  background: #0891b2;
   position: fixed;
   width: 100%;
   top: 0;
@@ -188,6 +188,7 @@
     .profile-box {
       display: flex;
       position: relative;
+      transition: all 0.3s ease-in-out; // Menambahkan transisi untuk animasi yang smooth
 
       button {
         width: auto;
@@ -195,6 +196,7 @@
 
       .dropdown-menu {
         width: 230px;
+        transition: transform 0.3s ease-in-out; // Menambahkan transisi untuk animasi yang smooth
 
         &.dropdown-menu-end {
           transform: translate3d(0px, 60px, 0px);
@@ -207,6 +209,7 @@
             font-size: 14px;
             display: flex;
             align-items: center;
+            transition: color 0.3s ease-in-out; // Menambahkan transisi untuk animasi yang smooth
 
             i {
               margin-right: 15px;
@@ -218,6 +221,7 @@
 
       .profile-info {
         margin: 0 5px;
+        transition: margin 0.3s ease-in-out; // Menambahkan transisi untuk animasi yang smooth
         .info {
           display: flex;
           align-items: center;
@@ -230,6 +234,7 @@
             border-radius: 50%;
             margin-left: 16px;
             position: relative;
+            transition: border 0.3s ease-in-out; // Menambahkan transisi untuk animasi yang smooth
 
             .status {
               width: 16px;
@@ -241,11 +246,13 @@
               bottom: 0;
               right: 0;
               top: auto;
+              transition: background 0.3s ease-in-out; // Menambahkan transisi untuk animasi yang smooth
             }
 
             img {
               width: 100%;
               border-radius: 50%;
+              transition: width 0.3s ease-in-out; // Menambahkan transisi untuk animasi yang smooth
             }
           }
         }
