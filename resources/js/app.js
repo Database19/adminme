@@ -1,8 +1,9 @@
 import './bootstrap';
 import '../sass/app.scss';
 import 'tailwindcss/tailwind.css';
+import Turbolinks from 'turbolinks';
+Turbolinks.start();
 
-// Debugging untuk memastikan bahwa event klik berfungsi dengan benar
 document.addEventListener('DOMContentLoaded', () => {
     const collapseLinks = document.querySelectorAll('[data-bs-toggle="collapse"]');
     collapseLinks.forEach(link => {
@@ -11,6 +12,15 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 });
+
+document.addEventListener('turbolinks:request-start', function() {
+    document.getElementById('loading').style.display = 'flex';
+});
+
+document.addEventListener('turbolinks:load', function() {
+    document.getElementById('loading').style.display = 'none';
+});
+
 
 
 import './customStyle';

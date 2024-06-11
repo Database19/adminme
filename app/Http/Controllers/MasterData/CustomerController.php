@@ -4,14 +4,25 @@ namespace App\Http\Controllers\MasterData;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth; // Tambahkan ini untuk memperbaiki masalah class Auth tidak ditemukan
 
 class CustomerController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $fields = getField('customers',['nama','objek','lokasi','peruntukan','potensi','status']);
+        $fields = getField('customers',['nama','lokasi','peruntukan','potensi','status']);
+        $query = _db('customers');
 
-        return view('master-data.customer.index', compact('fields'));
+        if ($request->has('filter_name')) {
+            $query->where('nama', 'like', '%' . $request->filter_name . '%');
+        }
+        if ($request->has('filter_city')) {
+            $query->where('lokasi', 'like', '%' . $request->filter_city . '%');
+        }
+
+        $data = $query->paginate(7);
+
+        return view('master-data.customer.index', compact('fields', 'data'));
     }
 
     /**
@@ -33,6 +44,7 @@ class CustomerController extends Controller
         $data['uuid'] = uuid();
         $data['id'] = _db('customers')->max('id') + 1;
         $data['kode_customer'] = 'CS' . sprintf('%05d', $data['id']) . $data['relasi'];
+        // dd($data);
         _db('customers')->insert($data);
 
         return redirect()->route('customer.index')->with(['success' => 'Customer berhasil ditambahkan.', 'alert-time' => 3]);
@@ -43,7 +55,10 @@ class CustomerController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $fields = getField('customers');
+        $data = _db('customers')->find($id);
+
+        return view('master-data.customer.form', compact('fields', 'data'));
     }
 
     /**

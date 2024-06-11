@@ -1,9 +1,9 @@
 <div class="col-md-6">
     <button type="button" class="btn-ved btn-sm primary-btn mb-1" onclick="toggleFilters()">Filter</button>
     <div class="card-style-1 mb-1" style="display:none;" id="filters">
-        <form action="#" method="POST">
+        <form action="{{ route('customer.index') }}" method="GET">
             @csrf
-            @method('POST')
+            @method('GET')
             <div class="filters m-2">
                 <div class="mb-1 d-flex flex-column flex-md-row align-items-center">
                     <label for="filter_name" class="form-label me-2">Nama&nbsp;&nbsp;&nbsp;:</label>

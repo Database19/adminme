@@ -31,7 +31,7 @@
                 <ul id="{{ $ids }}" class="dropdown-nav collapse">
                     @foreach($menu->children as $child)
                         <li>
-                            <a href="{{ route($child->route) }}">{{ $child->title }}</a>
+                            <a href="{{ route($child->route) }}" data-turbolinks="true">{{ $child->title }}</a>
                         </li>
                     @endforeach
                 </ul>

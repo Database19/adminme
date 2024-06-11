@@ -10,8 +10,6 @@ Auth::routes();
 
 Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('dashboard');
 
-Route::get('/logout')->name('logout');
-
 Route::middleware('auth')->group(function () {
     Route::view('about', 'about')->name('about');
 
@@ -22,7 +20,11 @@ Route::middleware('auth')->group(function () {
 
     Route::group(['prefix' => 'master-data'], function () {
         Route::resource('customer', \App\Http\Controllers\MasterData\CustomerController::class);
+        Route::resource('paket', \App\Http\Controllers\MasterData\PaketController::class);
     });
 
 
+    Route::get('/logout', function() {
+        return view('welcome');
+    })->name('logout');
 });

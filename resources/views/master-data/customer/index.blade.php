@@ -12,7 +12,6 @@
     </div>
 
     <div class="card-styles">
-        {{-- Customer Wrapper Title --}}
         <div class="title-wrapper">
             <div class="row align-items-center">
                 <div class="col-md-6">
@@ -43,20 +42,22 @@
                                     <th class="text-center">Action</th>
                             </tr>
                         </thead>
-                        <tbody style="text-align: center; margin: 5px; font-size: 12px">
-                            <tr>
-                                <td>Data 1</td>
-                                <td>Data 2</td>
-                                <td>Data 3</td>
-                                <td>Data 4</td>
-                                <td>Data 5</td>
-                                <td>Data 6</td>
-                                <x-ved-btn />
-                            </tr>
+                        <tbody style="text-align: center; margin: 2px; font-size: 12px">
+                            @foreach ($data as $item)
+                                <tr>
+                                    @foreach ($fields as $field)
+                                        <td>{{ $item->{$field} }}</td>
+                                    @endforeach
+                                    <x-ved-btn :id="$item->id" />
+                                </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>
             </div>
+        </div>
+        <div class="flex justify-center mt-4">
+            {{ $data->links() }}
         </div>
     </div>
 @endsection
